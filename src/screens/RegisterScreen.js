@@ -17,12 +17,8 @@ const RegisterScreen = ({ navigation }) => {
           password,
         }
       );
-      if (response.data.EC === 0) {
-        alert("Đăng ký thành công!");
-        navigation.navigate("Login");
-      } else {
-        alert("Đăng ký thất bại!");
-      }
+      alert(response.data.EM);
+      navigation.navigate("Login");
     } catch (error) {
       alert(error.response.data.EM);
     }

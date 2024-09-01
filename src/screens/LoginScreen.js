@@ -18,13 +18,8 @@ const LoginScreen = ({ navigation }) => {
           password,
         }
       );
-      console.log(response.data);
-      if (response.data.EC === 0) {
-        await AsyncStorage.setItem("userToken", response.data.DT.token);
-        navigation.navigate("Home");
-      } else {
-        alert("Đăng nhập thất bại!");
-      }
+      await AsyncStorage.setItem("userToken", response.data.DT.token);
+      navigation.navigate("Home");
     } catch (error) {
       alert(error.response.data.EM);
     }
@@ -47,6 +42,10 @@ const LoginScreen = ({ navigation }) => {
         onChangeText={setPassword}
       />
       <Button title="Đăng Nhập" onPress={handleLogin} />
+      <Button
+        title="Forgot Password?"
+        onPress={() => navigation.navigate("ForgetPassword")}
+      />
       <Button title="Đăng Ký" onPress={() => navigation.navigate("Register")} />
     </View>
   );
