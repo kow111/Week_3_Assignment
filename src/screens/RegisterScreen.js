@@ -1,4 +1,3 @@
-// src/screens/RegisterScreen.js
 import React, { useState } from "react";
 import { View, Text, TextInput, Button, StyleSheet } from "react-native";
 import axios from "axios";
@@ -9,16 +8,14 @@ const RegisterScreen = ({ navigation }) => {
 
   const handleRegister = async () => {
     try {
-      // Thay thế URL và cấu hình axios với URL của bạn
-      const response = await axios.post(
-        "http://localhost:3000/api/v1/user/signup",
-        {
-          email,
-          password,
-        }
-      );
-      alert(response.data.EM);
-      navigation.navigate("Login");
+      await axios.post("http://localhost:3000/api/v1/user/signup", {
+        email,
+        password,
+      });
+      await axios.post("http://localhost:3000/api/v1/user/send-otp", {
+        email,
+      });
+      navigation.navigate("EnterOTP", { email });
     } catch (error) {
       alert(error.response.data.EM);
     }

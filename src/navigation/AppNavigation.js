@@ -5,6 +5,7 @@ import LoginScreen from "../screens/LoginScreen";
 import RegisterScreen from "../screens/RegisterScreen";
 import HomeScreen from "../screens/HomeScreen";
 import ForgetPasswordScreen from "../screens/ForgetPasswordScreen";
+import EnterOTPScreen from "../screens/EnterOTPScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -16,6 +17,7 @@ const AppNavigation = () => {
         <Stack.Screen name="Register" component={RegisterScreen} />
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="ForgetPassword" component={ForgetPasswordScreen} />
+        <Stack.Screen name="EnterOTP" component={EnterOTPScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

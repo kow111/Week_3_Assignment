@@ -1,4 +1,3 @@
-// src/screens/LoginScreen.js
 import React, { useState } from "react";
 import { View, Text, TextInput, Button, StyleSheet } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -10,7 +9,6 @@ const LoginScreen = ({ navigation }) => {
 
   const handleLogin = async () => {
     try {
-      // Thay thế URL và cấu hình axios với URL của bạn
       const response = await axios.post(
         "http://localhost:3000/api/v1/user/login",
         {
@@ -18,7 +16,13 @@ const LoginScreen = ({ navigation }) => {
           password,
         }
       );
+      if (response.data.DT.user.is_verified === false) {
+        alert("Tài khoản chưa được xác thực");
+        navigation.navigate("EnterOTP", { email });
+        return;
+      }
       await AsyncStorage.setItem("userToken", response.data.DT.token);
+      await AsyncStorage.setItem("user", JSON.stringify(response.data.DT.user));
       navigation.navigate("Home");
     } catch (error) {
       alert(error.response.data.EM);
