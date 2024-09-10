@@ -17,17 +17,12 @@ const HomeScreen = ({ navigation }) => {
     fetchUser();
   });
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Chào mừng bạn!</Text>
+    <View className="flex-1 items-center justify-center bg-white gap-3">
+      <Text>Chào mừng bạn!</Text>
       <Text>Email: {email}</Text>
       <Button title="Đăng Xuất" onPress={handleLogout} />
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: "center", alignItems: "center" },
-  title: { fontSize: 24, marginBottom: 16 },
-});
 
 export default HomeScreen;
