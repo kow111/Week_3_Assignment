@@ -33,7 +33,7 @@ const LoginScreen = ({ navigation }) => {
     <View style={styles.container}>
       <Text style={styles.title}>Đăng Nhập</Text>
       <TextInput
-        style={styles.input}
+        className="border border-gray-400 p-2 mb-2"
         placeholder="Email"
         value={email}
         onChangeText={setEmail}
